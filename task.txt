@@ -1,0 +1,27 @@
+// Here we'll define the task we're performing-
+
+REST API- JSON
+
+
+GET /api/users - List all the users
+
+GET /api/users/1 - GET the user with the ID 1
+GET /api/users/2 - GET the user with the ID 2
+
+Dynamic Path Parameters
+GET /api/users/:id 
+:id -> Variable | Dynamic
+
+POST /users - Create new user
+
+PATCH /api/users/1 - Edit the user with ID 1
+
+DELETE /api/users/1 - Delete the user with ID 1
+
+// So we've to perform task using REST API 
+// For that we need data from the users but as we didn't connect our server with any database [mongodb,mongoose,etc], We're going to use one website which provides the anonymous data in JSON file/format.
+
+// The website - mockaroo.com
+// This website help to create the fake data for the testing purposes
+
+
