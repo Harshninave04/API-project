@@ -1,7 +1,11 @@
 const express = require("express");
 const users = require("./MOCK_DATA.json");
+const fs = require("fs");
 const port = 9000;
 const app = express();
+
+//middleware plugin
+app.use(express.urlencoded({ extended: false }));
 
 // Routes
 
@@ -9,9 +13,9 @@ app.get("/", (req, res) => res.send("Hello , You're on Homepage!"));
 
 app.get("/users", (req, res) => {
   const html = `
-  <ul>
-    ${users.map((users) => `<li>${users.first_name}</li>`).join("")}
-  </ul>  
+  <ol>
+    ${users.map((users) => `<li>${users.first_name}</li>`).join("")}    
+  </ol>  
   `;
   res.send(html);
 });
@@ -45,7 +49,11 @@ app
   });
 
 app.post("/api/users", (req, res) => {
-  return res.json({ status: "pending" });
+  const body = req.body;
+  users.push({ ...body, id: users.length + 1 }); // In the body we are pushing the id with the continuous number
+  fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
+    return res.json({ status: "success", id: users.length });
+  });
 });
 
 app.listen(port, () => {
