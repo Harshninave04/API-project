@@ -1,0 +1,5 @@
+Postman is an utility tool which is used for API testing and documentation
+
+For connecting express with postman there is a plugin called middleware.
+
+With the help of post method we push the data - 
